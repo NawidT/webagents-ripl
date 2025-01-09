@@ -171,7 +171,7 @@ async def run_experiment(task_range, experiment_config):
     logger.info('\033[31mAll tasks finished!\033[0m')
     logger.info('\033[31mPress Enter to exit...\033[0m')
 
-
+# KEY COMMENTS: MAIN FUNCTION BEING DEFINED HERE
 async def main(global_reward_mode="no_global_reward",
                planning_text_model="gpt-4-turbo",
                global_reward_text_model="gpt-4-turbo",
@@ -212,7 +212,7 @@ async def main(global_reward_mode="no_global_reward",
 
     await run_experiment(task_range, experiment_config)
 
-
+## KEY COMMENTS: CODE STARTS HERE
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(
         description="Run the web agent in different modes.")

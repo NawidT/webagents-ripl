@@ -1,6 +1,7 @@
 from playwright.async_api import Page
 import re
 import toml
+import json
 import json5
 import traceback
 import os
@@ -13,6 +14,7 @@ from agent.Utils.utils import save_screenshot, is_valid_base64
 from agent.Reward.global_reward import GlobalReward
 from evaluate import FinishTaskEvaluator, TaskLengthEvaluator, URLEvaluator, ElementEvaluator
 from logs import logger
+from agent.LLM.token_calculator import save_token_count_to_file
 
 
 def read_file(file_path: str = "./data/example/example_130.json") -> List[List]:

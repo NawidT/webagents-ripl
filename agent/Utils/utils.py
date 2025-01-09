@@ -148,6 +148,8 @@ def is_valid_base64(s):
 
 
 def extract_longest_substring(s):
+    s = str(s)
+    s = s.strip()  # Remove leading and trailing whitespaces
     start = s.find('{')  # Find the first occurrence of '['
     end = s.rfind('}')  # Find the last occurrence of ']'
     # Check if '[' and ']' were found and if they are in the right order

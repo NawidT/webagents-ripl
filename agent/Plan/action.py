@@ -68,7 +68,7 @@ class ActionParser():
     def parse_action(self, message):
         message_substring = extract_longest_substring(message)
         decoded_result = {}
-        decoded_result = json5.loads(message_substring)
+        decoded_result = json5.loads(message_substring if message_substring != None else '{}')
         return decoded_result
 
     def extract_status_and_description(self, message) -> dict:
