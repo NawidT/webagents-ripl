@@ -125,8 +125,8 @@ class BasePrompts:
 
         You also need to provide an effective description or summary of the above requirements through key information and characteristics of the current web page.
         **A proper description contains**:
-            - What is the current completion status of the task? (IMPORTNAT)
-            - What is your overall plan for completing your goal and target task in the future? (IMPORTNAT)
+            - What is the current completion status of the task? (IMPORTANT)
+            - What is your overall plan for completing your goal and target task in the future? (IMPORTANT)
             - REMEMBER DO NOT LEAVE THE DESCRIPTION EMPTY!
 
         **Output Requirements**:

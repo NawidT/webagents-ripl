@@ -117,7 +117,7 @@ def create_html_environment(mode):
 
 
 async def run_experiment(task_range, experiment_config):
-    for task_index in task_range:
+    for task_index in task_range: # runs multiple tasks
         task_uuid = None
         if experiment_config.config['basic']['task_mode'] == "batch_tasks":
             task = experiment_config.file[task_index]
@@ -133,6 +133,7 @@ async def run_experiment(task_range, experiment_config):
             reference_evaluate_steps = None
             logger.info(f"task_name: {task_name}")
 
+        # opens the chromium browser to relay real-time info
         env = create_html_environment(experiment_config.mode)
         if is_model_supported(experiment_config.planning_text_model) and is_model_supported(
                 experiment_config.global_reward_text_model):
@@ -209,7 +210,8 @@ async def main(global_reward_mode="no_global_reward",
         record_time=record_time,
         file=file
     )
-
+    # runs the python script with the experiments within the indexes. Check experiement and their
+    # corresponding observations in the nawid.ipynb file
     await run_experiment(task_range, experiment_config)
 
 ## KEY COMMENTS: CODE STARTS HERE
