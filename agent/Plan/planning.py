@@ -149,7 +149,7 @@ class DVMode(InteractionMode):
             f"\033[32mplanning_request:\n{print_limited_json(planning_request, limit=1000)}")
         print("\033[0m")
         planning_response, error_message = await self.visual_model.request(planning_request)
-        return planning_response, error_message, None, None, None
+        return planning_response, error_message, None, None, [0, 0]
 
 
 class VisionMode(InteractionMode):

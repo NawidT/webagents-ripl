@@ -24,7 +24,6 @@ class ActionParser():
     # Extract Thought and Action from the results returned by LLM,
     # return thought (str) and action (dict), where action has four fields: action, element_id, action_input, description
     def extract_thought_and_action(self, message) -> tuple[str, dict]:
-        print("message or planning_response: ", message)
         result_action = None
         try:
             result_action = re.findall("```(.*?)```", message, re.S)[0]

@@ -258,8 +258,7 @@ class AsyncHTMLEnvironment:
         if self.mode in ["d_v", "dom_v_desc", "vision_to_dom"]:
             is_valid, message = is_valid_base64(
                 observation_VforD)
-            logger.info(
-                "Successfully fetch html content with observation_VforD:", message)
+            logger.info(f"Successfully fetch html content with observation_VforD: {message}")
         return (observation, observation_VforD) if self.mode in ["d_v", "dom_v_desc", "vision_to_dom"] else observation
 
     async def reset(self, start_url: str = ""):

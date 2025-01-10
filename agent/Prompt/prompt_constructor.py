@@ -14,14 +14,14 @@ from agent.Memory.short_memory.history import HistoryMemory
 
 class BasePromptConstructor:
     def __init__(self):
-        pass
+        self.prompt_system = BasePrompts.planning_prompt_system
+        self.prompt_user = BasePrompts.planning_prompt_user
 
 
 # Build a prompt for planning based on the DOM tree
 class PlanningPromptConstructor(BasePromptConstructor):
     def __init__(self):
-        self.prompt_system = BasePrompts.planning_prompt_system
-        self.prompt_user = BasePrompts.planning_prompt_user
+        super()
 
     def construct(
             self,
@@ -82,7 +82,6 @@ class VisionDisc2PromptConstructor(BasePromptConstructor):
 class VisionDisc1PromptConstructor(BasePromptConstructor):
     def __init__(self):
         super().__init__()
-        self.prompt_system = DomVisionDiscPrompts.dom_vision_disc_prompt_system1
 
     def construct(
             self,
@@ -100,8 +99,8 @@ class VisionDisc1PromptConstructor(BasePromptConstructor):
 class ObservationVisionDiscPromptConstructor(BasePromptConstructor):
     def __init__(self):
         super().__init__()
-        self.prompt_system = DomVisionDiscPrompts.dom_vision_disc_planning_prompt_system
-        self.prompt_user = DomVisionDiscPrompts.dom_vision_disc_planning_prompt_user
+        # self.prompt_system = DomVisionDiscPrompts.dom_vision_disc_planning_prompt_system
+        # self.prompt_user = DomVisionDiscPrompts.dom_vision_disc_planning_prompt_user
 
     def construct(
             self,
@@ -143,8 +142,8 @@ class ObservationVisionDiscPromptConstructor(BasePromptConstructor):
 class ObservationVisionActPromptConstructor(BasePromptConstructor):
     def __init__(self):
         super().__init__()
-        self.prompt_system = VisionToDomPrompts.vision_act_planning_prompt_system
-        self.prompt_user = VisionToDomPrompts.vision_act_planning_prompt_user
+        # self.prompt_system = VisionToDomPrompts.vision_act_planning_prompt_system
+        # self.prompt_user = VisionToDomPrompts.vision_act_planning_prompt_user
 
     def construct(
             self,
@@ -184,8 +183,8 @@ class ObservationVisionActPromptConstructor(BasePromptConstructor):
 class VisionToDomPromptConstructor(BasePromptConstructor):
     def __init__(self):
         super().__init__()
-        self.prompt_system = VisionToDomPrompts.vision_to_dom_planning_prompt_system
-        self.prompt_user = ""  # VisionToDomPrompts.vision_act_planning_prompt_user
+        # self.prompt_system = VisionToDomPrompts.vision_to_dom_planning_prompt_system
+        # self.prompt_user = ""  # VisionToDomPrompts.vision_act_planning_prompt_user
 
     def construct(
             self,
@@ -207,8 +206,8 @@ class VisionToDomPromptConstructor(BasePromptConstructor):
 class D_VObservationPromptConstructor(BasePromptConstructor):
     def __init__(self):
         super().__init__()
-        self.prompt_system = DomVisionPrompts.d_v_planning_prompt_system
-        self.prompt_user = DomVisionPrompts.d_v_planning_prompt_user
+        # self.prompt_system = BasePrompts.planning_prompt_system
+        # self.prompt_user = DomVisionPrompts.d_v_planning_prompt_user
 
     def construct(
             self,
