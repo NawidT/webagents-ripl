@@ -42,10 +42,10 @@ def validate_config(config, observation_mode, global_reward_mode, observation_mo
     all_json_models = config['model']['json_models']
     interaction_mode = config['steps']['interaction_mode']
 
-    if observation_mode not in ["dom"]:
-        logger.error(
-            "observation mode is not correctly defined! Currently we only support DOM observation.")
-        exit()
+    # if observation_mode not in ["dom"]:
+    #     logger.error(
+    #         "observation mode is not correctly defined! Currently we only support DOM observation.")
+    #     exit()
 
     if interaction_mode not in [True, False]:
         logger.error(
@@ -178,7 +178,7 @@ async def main(global_reward_mode="no_global_reward",
                global_reward_text_model="gpt-4-turbo",
                single_task_name="",
                raw_data_index=-1,
-               observation_mode="dom_v_desc",
+               observation_mode="d_v",
                ground_truth_mode=False,
                toml_path=None
                ):

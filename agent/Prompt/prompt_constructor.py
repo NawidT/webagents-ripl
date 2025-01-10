@@ -231,8 +231,8 @@ class D_VObservationPromptConstructor(BasePromptConstructor):
                 previous_trace=previous_trace, reflection=status_description).construct_previous_trace_prompt()
             # trace_prompt = history_memory.construct_previous_trace_prompt()
             prompt_elements.append({"type": "text", "text": trace_prompt})
-            # if status_description != "":
-            #     prompt_elements.append({"type": "text", "text": f"Task completion description is {status_description}"})
+            if status_description != "":
+                prompt_elements.append({"type": "text", "text": f"Task completion description is {status_description}"})
             if feedback != "":
                 prompt_elements.append(
                     {"type": "text", "text": f"There an invalid action description is below:\n {feedback}\n"})

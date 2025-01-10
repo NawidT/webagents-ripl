@@ -145,12 +145,11 @@ class DVMode(InteractionMode):
     async def execute(self, status_description, user_request, previous_trace, observation, feedback, observation_VforD):
         planning_request = D_VObservationPromptConstructor().construct(
             user_request, previous_trace, observation, observation_VforD, feedback, status_description)
-
         print(
             f"\033[32mplanning_request:\n{print_limited_json(planning_request, limit=1000)}")
         print("\033[0m")
         planning_response, error_message = await self.visual_model.request(planning_request)
-        return planning_response, error_message, None, None
+        return planning_response, error_message, None, None, None
 
 
 class VisionMode(InteractionMode):
@@ -207,6 +206,7 @@ class Planning:
             observation=observation,
             feedback=feedback,
             observation_VforD=observation_VforD)
+        
 
         logger.info(f"\033[34mPlanning_Response:\n{planning_response}\033[0m")
         if mode != "vision_to_dom":
