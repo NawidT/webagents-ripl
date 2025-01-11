@@ -57,7 +57,7 @@ class DomVDescMode(InteractionMode):
             f"\033[35mplanning_request:\n{print_limited_json(planning_request, limit=10000)}")
         print("\033[0m")
         planning_response, error_message = await self.text_model.request(planning_request)
-        return planning_response, error_message, None, None
+        return planning_response, error_message, None, None, [0, 0]
 
 
 class VisionToDomMode(InteractionMode):
@@ -198,14 +198,16 @@ class Planning:
             "vision": VisionMode(visual_model=gpt4v)
         }
 
-        # planning_response_thought, planning_response_action
-        planning_response, error_message, planning_response_thought, planning_response_action, planning_token_count = await modes[mode].execute(
-            status_description=status_description,
-            user_request=user_request,
-            previous_trace=previous_trace,
-            observation=observation,
-            feedback=feedback,
-            observation_VforD=observation_VforD)
+        # this loop ensure no errors on action extraction, which means no wasted time steps
+        planning_response = ""
+        while "{" not in planning_response and "}" not in planning_response:
+            planning_response, error_message, planning_response_thought, planning_response_action, planning_token_count = await modes[mode].execute(
+                status_description=status_description,
+                user_request=user_request,
+                previous_trace=previous_trace,
+                observation=observation,
+                feedback=feedback,
+                observation_VforD=observation_VforD)
         
 
         logger.info(f"\033[34mPlanning_Response:\n{planning_response}\033[0m")

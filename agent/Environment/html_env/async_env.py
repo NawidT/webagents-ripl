@@ -226,13 +226,16 @@ class AsyncHTMLEnvironment:
     def _save_event_to_file(self, current_event):
         file_path = os.path.join(self.events_directory, "current_event.json")
         try:
+            # print("Save event to file ---------")
             events = []
             if os.path.exists(file_path):
+                # print("file path: ", file_path)
                 with open(file_path, "r", encoding="utf-8") as json_file:
                     events = json.load(json_file)
                 events.append(current_event)
-                with open(file_path, "w", encoding="utf-8") as json_file:
-                    json.dump(events, json_file, indent=4, ensure_ascii=False)
+                # print("events: ", events)
+            with open(file_path, "w", encoding="utf-8") as json_file:
+                json.dump(events, json_file, indent=4, ensure_ascii=False)
         except Exception as e:
             logger.error(f"Error saving event to file: {str(e)}")
 
