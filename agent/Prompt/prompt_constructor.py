@@ -21,7 +21,7 @@ class BasePromptConstructor:
 # Build a prompt for planning based on the DOM tree
 class PlanningPromptConstructor(BasePromptConstructor):
     def __init__(self):
-        super()
+        super().__init__()
 
     def construct(
             self,
