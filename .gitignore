@@ -8,8 +8,6 @@ result_logs/
 
 results/
 
-LOGS/
-
 batch_tasks_results/*
 
 data/*
